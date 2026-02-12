@@ -54,5 +54,5 @@ The zone resource has to be in terraform to attach the A record for the newly cr
   * Hurdles: 
     * TBD
 <br/>
-I had a hard time finding the free trial.  If you want a free trial of Digital Ocean you should be able to get the $200 credit here: <br/>
+I had a hard time finding the free trial.  If you want a free trial of Digital Ocean you should be able to get the $200 credit here: <br/>  
 [![DigitalOcean Referral Badge](https://web-platforms.sfo2.cdn.digitaloceanspaces.com/WWW/Badge%201.svg)](https://www.digitalocean.com/?refcode=fd6adbc0ccc5&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=badge)

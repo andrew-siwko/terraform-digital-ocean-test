@@ -16,12 +16,12 @@ resource "linode_domain" "dns_zone" {
 }
 
 # # Records for the public IP addresses.
-# resource "linode_domain_record" "do01_a_record" {
-#   domain_id   = linode_domain.dns_zone.id
-#   name        = "do01"
-#   record_type = "A"
-#   ttl_sec     = 5
-#   target      = azurerm_linux_virtual_machine.vm_01.public_ip_address
-# }
+resource "linode_domain_record" "do01_a_record" {
+  domain_id   = linode_domain.dns_zone.id
+  name        = "do01"
+  record_type = "A"
+  ttl_sec     = 5
+  target      = digitalocean_droplet.vm01.ipv4_address
+}
 
 

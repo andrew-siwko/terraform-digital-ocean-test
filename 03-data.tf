@@ -14,24 +14,18 @@ data "digitalocean_images" "rocky" {
   }
 }
 
-output "real_images" {
-  value = data.digitalocean_images.rocky.images
+output "newest_rocky_image" {
+  value = data.digitalocean_images.rocky.images[0] 
 }
 
-# 2. Locate a specific Region (e.g., New York 3)
-data "digitalocean_region" "ny" {
-  slug = "nyc3"
-}
-
-# 3. Locate a Droplet Size (e.g., 2GB RAM for your migration test)
-data "digitalocean_sizes" "standard" {
+data "digitalocean_sizes" "filtered" {
   filter {
     key    = "vcpus"
     values = [1]
   }
   filter {
     key    = "memory"
-    values = [2048] # 2GB
+    values = [1024]
   }
   sort {
     key       = "price_monthly"
@@ -44,6 +38,6 @@ data "digitalocean_sizes" "standard" {
 #   value = data.digitalocean_image.rocky_linux.id
 # }
 
-output "selected_size" {
-  value = data.digitalocean_sizes.standard.sizes
+output "lowest_price_sizes" {
+  value = data.digitalocean_sizes.filtered[0]
 }

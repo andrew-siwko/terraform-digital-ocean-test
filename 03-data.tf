@@ -39,5 +39,5 @@ data "digitalocean_sizes" "filtered" {
 # }
 
 output "lowest_price_sizes" {
-  value = data.digitalocean_sizes.filtered[0]
+  value = data.digitalocean_sizes.filtered
 }

@@ -17,29 +17,18 @@ data "digitalocean_images" "rocky" {
 output "newest_rocky_image" {
   value = data.digitalocean_images.rocky.images[0] 
 }
+locals { rocky_image = data.digitalocean_images.rocky.images[0] }
 
 data "digitalocean_sizes" "filtered" {
-  # filter {
-  #   key    = "vcpus"
-  #   values = [1]
-  # }
-  # filter {
-  #   key    = "memory"
-  #   values = [1024]
-  # }
   sort {
     key       = "price_monthly"
     direction = "asc"
   }
 }
 
-# Output the results so you can see the IDs
-# output "image_id" {
-#   value = data.digitalocean_image.rocky_linux.id
-# }
+locals { cheapest_size = data.digitalocean_sizes.filtered.sizes[0] }
 
-output "lowest_price_sizes" {
-  value = data.digitalocean_sizes.filtered.sizes
+output "lowest_price_size" {
+  value = local.cheapest_size
 }
 
-locals { cheapest_size = data.digitalocean_sizes.filtered.sizes[0] }

@@ -18,9 +18,9 @@ terraform {
 provider "digitalocean" {
   token = var.DIGITAL_OCEAN_TOKEN
 }
-data "digitalocean_ssh_key" "terraform" {
-  name = "your_ssh_key_name"
-}
+# data "digitalocean_ssh_key" "terraform" {
+#   name = "your_ssh_key_name"
+# }
 
 
 provider "linode" {

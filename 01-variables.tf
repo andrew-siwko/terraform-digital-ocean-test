@@ -4,6 +4,12 @@ variable "LINODE_API_KEY" {
   sensitive   = true
 }
 
+variable "DIGITAL_OCEAN_TOKEN" {
+  description = "The key to the DigitalOcean API"
+  type        = string
+  sensitive   = true
+}
+
 variable "instance_region" {
   description = "The region to create the instance"
   type        = string
@@ -34,7 +40,7 @@ variable "domain_soa_email" {
   default = "asiwko@siwko.org"
 }
 variable "rg_location" {
-  description = "The location of rht resource group."
+  description = "The location of the resource group."
   type    = string
   default = "eastus"
 }

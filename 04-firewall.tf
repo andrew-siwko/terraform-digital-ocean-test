@@ -1,5 +1,5 @@
 resource "digitalocean_firewall" "vm01_firewall" {
-  name = "vm01_firewall"
+  name = "vm01-firewall"
 
   # Link this firewall to your Droplet
   droplet_ids = [digitalocean_droplet.vm01.id]

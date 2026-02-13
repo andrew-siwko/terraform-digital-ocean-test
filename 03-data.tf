@@ -19,14 +19,14 @@ output "newest_rocky_image" {
 }
 
 data "digitalocean_sizes" "filtered" {
-  filter {
-    key    = "vcpus"
-    values = [1]
-  }
-  filter {
-    key    = "memory"
-    values = [1024]
-  }
+  # filter {
+  #   key    = "vcpus"
+  #   values = [1]
+  # }
+  # filter {
+  #   key    = "memory"
+  #   values = [1024]
+  # }
   sort {
     key       = "price_monthly"
     direction = "asc"

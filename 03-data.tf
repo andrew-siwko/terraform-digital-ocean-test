@@ -1,8 +1,26 @@
-
-
-# 1. Locate the Rocky Linux 9 Image
+# Find the Rocky Linux 9 image by name instead of slug
 data "digitalocean_image" "rocky_linux" {
-  slug = "rocky-linux-9-x64"
+  name = "Rocky Linux 9"
+}
+
+# OR, if you want the absolute latest version:
+data "digitalocean_images" "rocky" {
+  filter {
+    key    = "distribution"
+    values = ["Rocky Linux"]
+  }
+  filter {
+    key    = "name"
+    values = ["9"]
+  }
+  sort {
+    key       = "created"
+    direction = "desc"
+  }
+}
+
+output "real_image_id" {
+  value = data.digitalocean_images.rocky.images
 }
 
 # 2. Locate a specific Region (e.g., New York 3)

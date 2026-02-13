@@ -5,8 +5,8 @@ data "digitalocean_images" "rocky" {
   }
   filter {
     key    = "name"
-    values = ["9"]
-  }
+    values = ["^9.*"]
+    match_by = "re"  }
   sort {
     key       = "created"
     direction = "desc"

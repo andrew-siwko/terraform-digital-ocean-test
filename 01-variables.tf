@@ -13,7 +13,7 @@ variable "DIGITAL_OCEAN_TOKEN" {
 variable "instance_region" {
   description = "The region to create the instance"
   type        = string
-  default     = "us-southeast"
+  default     = "nyc3"
 }
 
 variable "instance_type" {

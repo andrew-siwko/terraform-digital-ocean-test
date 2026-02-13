@@ -45,5 +45,5 @@ data "digitalocean_sizes" "standard" {
 # }
 
 output "selected_size" {
-  value = data.digitalocean_sizes.standard.sizes[0].slug
+  value = data.digitalocean_sizes.standard.sizes
 }

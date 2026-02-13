@@ -8,7 +8,7 @@ resource "digitalocean_droplet" "vm01" {
  name = "vm01"
  region = var.instance_region
  size = local.cheapest_size.slug
- ssh_keys = [data.digitalocean_ssh_key.ansible_key.id]
+ ssh_keys = [digitalocean_ssh_key.ansible_key.id]
 }
 output "droplet_ip" {
   value = digitalocean_droplet.vm01.ipv4_address

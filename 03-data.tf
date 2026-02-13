@@ -1,9 +1,3 @@
-# Find the Rocky Linux 9 image by name instead of slug
-data "digitalocean_image" "rocky_linux" {
-  name = "Rocky Linux 9"
-}
-
-# OR, if you want the absolute latest version:
 data "digitalocean_images" "rocky" {
   filter {
     key    = "distribution"
@@ -19,7 +13,7 @@ data "digitalocean_images" "rocky" {
   }
 }
 
-output "real_image_id" {
+output "real_images" {
   value = data.digitalocean_images.rocky.images
 }
 
@@ -45,9 +39,9 @@ data "digitalocean_sizes" "standard" {
 }
 
 # Output the results so you can see the IDs
-output "image_id" {
-  value = data.digitalocean_image.rocky_linux.id
-}
+# output "image_id" {
+#   value = data.digitalocean_image.rocky_linux.id
+# }
 
 output "selected_size" {
   value = data.digitalocean_sizes.standard.sizes[0].slug

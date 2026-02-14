@@ -52,7 +52,7 @@ The zone resource has to be in terraform to attach the A record for the newly cr
 * I completed this one in a few hours.  The delay was because I was not sure that I had the free trial and I didn't want to burn up money in testing.  Getting in touch with support was an interesting experience.  First it was difficult to find support.  Once I opened a ticket I got an e-mail.  Assuming that someone would get back to me I waited until the end of the day.  When I read the message, it was a set of links to billing FAQs with the invitation to reply if I still had questions.  I had read all the FAQs first.  Feeling foolish I replied and overnight the free trial credit was applied.
 * Setting up a droplet (their name for a virtual machine) was simple.  The DO CLI (doctl) was easy to install and easy to use.  Based on experience with the other cloud providers I started by examining the instance types, available images and regions.
 * I added a new file (03-data.tf) in my process to examing the available resources using data statements, depositing the results in local variables (also new to me).
-* Note that I chose to store the tfstate locally to begin with.  Once the server was configured, I went back to work out how to store the state in the DO cloud.
+* Note that I chose to store the tfstate locally to begin with.  Once the server was configured, I went back to work out how to store the state in the DO cloud.  Setting up the bucket only took 20 minutes.  It was the quickest of all the backend setups.
 * Project stats:
   * Start: 2026-02-11
   * Functional: 2026-02-13

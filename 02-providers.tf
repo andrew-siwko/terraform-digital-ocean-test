@@ -11,7 +11,7 @@ terraform {
   }
   backend "s3" {
     endpoints = {
-      s3 = "https://asiwko-terraform.nyc3.digitaloceanspaces.com"
+      s3 = "https://nyc3.digitaloceanspaces.com"
     }
     
     bucket = "asiwko-terraform"

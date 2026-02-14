@@ -9,9 +9,20 @@ terraform {
       source = "linode/linode"
     }
   }
-  # this is temporary until we configure a remote back end.
-  backend "local" {
-    path = "terraform.tfstate"
+  backend "s3" {
+    endpoints = {
+      s3 = "https://asiwko-terraform.nyc3.digitaloceanspaces.com"
+    }
+    
+    bucket = "asiwko-terraform"
+    key    = "terraform.tfstate" 
+    region = "us-east-1"                  # Standard S3 requirement; value is ignored but must be valid AWS region slug
+
+    # DigitalOcean doesn't support these AWS-specific features
+    skip_credentials_validation = true
+    skip_metadata_api_check     = true
+    skip_requesting_account_id  = true
+    skip_region_validation      = true
   }
 }
 
@@ -22,3 +33,5 @@ provider "digitalocean" {
 provider "linode" {
   token = var.LINODE_API_KEY
 }
+
+

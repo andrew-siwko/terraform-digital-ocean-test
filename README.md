@@ -7,6 +7,8 @@ This experiment uses Terraform to create a single virtual machine on [Digital Oc
   * The two variable files contain parameters factored out of the main code and their definitions.  As the configuration code matured and I added more cloud providers, it became clear that certain parameters could be pulled up for ease of use.
 * 02-providers.tf
   * This file contains the top level terraform{} block which contains required providers, by necessity, the backend definition and connects providers to required variables.  i would have liked to split the backend into a separate file but there may only be one terraform{} block and the rest of the world uses providers.  In these projects I have stored the tfstate file on the cloud provider rather than defining local storage.  I found this proceess to be difficult and educational.
+* 03-data.tf
+  * This file contains data statements to query the cloud provider for images and instance types.  The results are stored in local variables and used to create the VM instance.  This file arose from the early struggles I had with finding available resources with compatible type, image and location.
 * 03-network.tf
   * This file specifies network elements.  In a basic, single VM case, it is not generally needed.  As soon as you want to control traffic with a firewall or security group, the network definition is required to attach the rules.
 * 04-security-group.tf, 04-firewall.tf, 04-security-list.tf
@@ -47,14 +49,19 @@ The zone resource has to be in terraform to attach the A record for the newly cr
 
 ## Observations
 * Digital Ocean was my seventh provisioning project.
+* I completed this one in a few hours.  The delay was because I was not sure that I had the free trial and I didn't want to burn up money in testing.  Getting in touch with support was an interesting experience.  First it was difficult to find support.  Once I opened a ticket I got an e-mail.  Assuming that someone would get back to me I waited until the end of the day.  When I read the message, it was a set of links to billing FAQs with the invitation to reply if I still had questions.  I had read all the FAQs first.  Feeling foolish I replied and overnight the free trial credit was applied.
+* Setting up a droplet (their name for a virtual machine) was simple.  The DO CLI (doctl) was easy to install and easy to use.  Based on experience with the other cloud providers I started by examining the instance types, available images and regions.
+* I added a new file (03-data.tf) in my process to examing the available resources using data statements, depositing the results in local variables (also new to me).
+* Note that I chose to store the tfstate locally to begin with.  Once the server was configured, I went back to work out how to store the state in the DO cloud.
 * Project stats:
   * Start: 2026-02-11
-  * Functional: TBD
-  * Number of Jenkins builds to success: TBD
+  * Functional: 2026-02-13
+  * Number of Jenkins builds to success: 26
   * Hurdles: 
-    * TBD
+    * Getting in touch with billing support delayed me two days.
+    * During the ansible job that follows, the ssl package was out of date and caused sshd to refuse connections.  I deleted the droplet and reran terraform to resolve the problem.
 <br/>
-I had to contact billing support to enable my free trial.  If you want a free trial of Digital Ocean you should be able to get the $200 credit here:
+If you want to avoid mhaving to contact support for a free trial of Digital Ocean you can sign up for the $200 credit through this link directly:
 
 [![DigitalOcean Referral Badge](https://web-platforms.sfo2.cdn.digitaloceanspaces.com/WWW/Badge%202.svg)](https://www.digitalocean.com/?refcode=fd6adbc0ccc5&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=badge)
  

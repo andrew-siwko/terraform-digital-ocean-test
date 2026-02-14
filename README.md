@@ -61,7 +61,7 @@ The zone resource has to be in terraform to attach the A record for the newly cr
     * Getting in touch with billing support delayed me two days.
     * During the ansible job that follows, the ssl package was out of date and caused sshd to refuse connections.  I deleted the droplet and reran terraform to resolve the problem.
 <br/>
-If you want to avoid mhaving to contact support for a free trial of Digital Ocean you can sign up for the $200 credit through this link directly:
+If you want to avoid having to contact support for a free trial of Digital Ocean you can sign up for the $200 credit through this link directly:
 
 [![DigitalOcean Referral Badge](https://web-platforms.sfo2.cdn.digitaloceanspaces.com/WWW/Badge%202.svg)](https://www.digitalocean.com/?refcode=fd6adbc0ccc5&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=badge)
  

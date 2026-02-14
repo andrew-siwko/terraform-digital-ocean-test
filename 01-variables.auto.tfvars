@@ -1,7 +1,3 @@
-instance_region  = "nyc3"
-instance_type    = "Standard_L2aos_v4"
 domain_name      = "siwko.org"
 domain_soa_email = "asiwko@siwko.org"
-admin_username   = "azureuser"
-rg_location      = "eastus"
 

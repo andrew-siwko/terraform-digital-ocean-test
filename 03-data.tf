@@ -14,9 +14,6 @@ data "digitalocean_images" "rocky" {
   }
 }
 
-output "newest_rocky_image" {
-  value = data.digitalocean_images.rocky.images[0] 
-}
 locals { rocky_image = data.digitalocean_images.rocky.images[0] }
 
 data "digitalocean_sizes" "filtered" {
@@ -28,7 +25,4 @@ data "digitalocean_sizes" "filtered" {
 
 locals { cheapest_size = data.digitalocean_sizes.filtered.sizes[0] }
 
-output "lowest_price_size" {
-  value = local.cheapest_size
-}
 

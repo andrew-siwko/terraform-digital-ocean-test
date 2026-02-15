@@ -85,3 +85,6 @@ doctl compute image list-distribution
 # 203839248    NVIDIA AI/ML Ready with NVLink    base    Ubuntu          gpu-h100x8-base         true      30
 # 204596533    25.10 x64                         base    Ubuntu          ubuntu-25-10-x64        true      7
 # 214204353    AMD AI/ML Ready Image             base    Ubuntu          gpu-amd-base            true      30
+
+
+doctl compute certificate create --name terraform-key

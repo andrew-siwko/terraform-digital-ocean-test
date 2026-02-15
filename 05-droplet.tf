@@ -10,6 +10,3 @@ resource "digitalocean_droplet" "vm01" {
  size = local.cheapest_size.slug
  ssh_keys = [digitalocean_ssh_key.ansible_key.id]
 }
-output "droplet_ip" {
-  value = digitalocean_droplet.vm01.ipv4_address
-}   

@@ -22,7 +22,10 @@ resource "digitalocean_firewall" "vm01_firewall" {
     port_range       = "443"
     source_addresses = ["0.0.0.0/0", "::/0"]
   }
-
+  inbound_rule {
+    protocol         = "icmp"
+    source_addresses = ["0.0.0.0/0", "::/0"]
+  }
   # Outbound Rules: Allow everything so the Droplet can run 'dnf update'
   outbound_rule {
     protocol              = "tcp"
@@ -33,6 +36,10 @@ resource "digitalocean_firewall" "vm01_firewall" {
   outbound_rule {
     protocol              = "udp"
     port_range            = "1-65535"
+    destination_addresses = ["0.0.0.0/0", "::/0"]
+  }
+  outbound_rule {
+    protocol              = "icmp"
     destination_addresses = ["0.0.0.0/0", "::/0"]
   }
 }

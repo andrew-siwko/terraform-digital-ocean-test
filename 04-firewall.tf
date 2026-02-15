@@ -32,8 +32,7 @@ resource "digitalocean_firewall" "vm01_firewall" {
     port_range            = "1-65535"
     destination_addresses = ["0.0.0.0/0", "::/0"]
   }
-  
-  outbound_rule {
+    outbound_rule {
     protocol              = "udp"
     port_range            = "1-65535"
     destination_addresses = ["0.0.0.0/0", "::/0"]

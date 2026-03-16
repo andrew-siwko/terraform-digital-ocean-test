@@ -9,21 +9,28 @@ terraform {
       source = "linode/linode"
     }
   }
-  backend "s3" {
-    endpoints = {
-      s3 = "https://nyc3.digitaloceanspaces.com"
-    }
-    
-    bucket = "asiwko-terraform"
-    key    = "terraform.tfstate" 
-    region = "us-east-1"                  # Standard S3 requirement; value is ignored but must be valid AWS region slug
-
-    # DigitalOcean doesn't support these AWS-specific features
-    skip_credentials_validation = true
-    skip_metadata_api_check     = true
-    skip_requesting_account_id  = true
-    skip_region_validation      = true
+   backend "local" {
+    path = "/container_shared/tfstate/aws.tfstate"
   }
+
+  # This project started with the state stored in the provider's oject storage.  
+  # I moved it to local storage as providers charge for object storage and there was no benefit once the exercise was complete.
+
+  # backend "s3" {
+  #   endpoints = {
+  #     s3 = "https://nyc3.digitaloceanspaces.com"
+  #   }
+    
+  #   bucket = "asiwko-terraform"
+  #   key    = "terraform.tfstate" 
+  #   region = "us-east-1"                  # Standard S3 requirement; value is ignored but must be valid AWS region slug
+
+  #   # DigitalOcean doesn't support these AWS-specific features
+  #   skip_credentials_validation = true
+  #   skip_metadata_api_check     = true
+  #   skip_requesting_account_id  = true
+  #   skip_region_validation      = true
+  # }
 }
 
 provider "digitalocean" {

@@ -60,6 +60,12 @@ The zone resource has to be in terraform to attach the A record for the newly cr
   * Hurdles: 
     * Getting in touch with billing support delayed me two days.
     * During the ansible job that follows, the ssl package was out of date and caused sshd to refuse connections.  I deleted the droplet and reran terraform to resolve the problem.
+  * End of project
+    * My free credits ran out and Digital Ocean sent an e-mail documenting the fact.
+    * When other providers credits ran out, I destroyed the infrastructure manually.  This was painful and involved dependencies.
+    * With Digital Ocean I decided to try terraform destroy.
+    * On the first try terraform refised to destroy my linode domain (hooray!) and so I had to remove it from the state with terraform rm linode_domain.dns_zone.
+    * Once the locked resource was removed from the state file, the rest of the infrastructure was destroyed quickly.
 <br/>
 If you want to avoid having to contact support for a free trial of Digital Ocean you can sign up for the $200 credit through this link directly:
 
